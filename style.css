@@ -1,0 +1,708 @@
+/* ============================================
+   🌙 Life Companion / 生活伴侣 - Styles
+   ============================================ */
+
+/* ---- Overlay Panel ---- */
+#life-companion-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--SmartThemeBotMesBlurTintColor, #1a1a2e);
+  border-left: 1px solid var(--SmartThemeBorderColor, #333);
+  z-index: 9999;
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  font-family: inherit;
+}
+
+#life-companion-panel.open {
+  display: block;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ---- Panel Header ---- */
+.lc-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.lc-panel-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.lc-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.lc-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---- Tabs ---- */
+.lc-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--SmartThemeBorderColor, #333);
+  background: var(--SmartThemeBlurTintColor, #16213e);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.lc-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.lc-tab-btn {
+  flex: 1;
+  min-width: 60px;
+  padding: 10px 6px;
+  border: none;
+  background: transparent;
+  color: var(--SmartThemeBodyColor, #aaa);
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.lc-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lc-tab-btn.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.lc-tab-content {
+  display: none;
+  padding: 16px;
+}
+
+.lc-tab-content.active {
+  display: block;
+}
+
+/* ---- Common Components ---- */
+.lc-card {
+  background: var(--SmartThemeBlurTintColor, #16213e);
+  border: 1px solid var(--SmartThemeBorderColor, #333);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.lc-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--SmartThemeBodyColor, #eee);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  color: #fff;
+}
+
+.lc-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.lc-btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.lc-btn-secondary {
+  background: var(--SmartThemeBorderColor, #444);
+}
+
+.lc-btn-secondary:hover {
+  background: var(--SmartThemeBodyColor, #555);
+}
+
+.lc-btn-danger {
+  background: #e74c3c;
+}
+
+.lc-btn-success {
+  background: #2ecc71;
+}
+
+.lc-btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.lc-btn-block {
+  width: 100%;
+}
+
+.lc-input, .lc-select, .lc-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--SmartThemeBorderColor, #333);
+  border-radius: 8px;
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  color: var(--SmartThemeBodyColor, #eee);
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.lc-input:focus, .lc-select:focus, .lc-textarea:focus {
+  border-color: #667eea;
+}
+
+.lc-textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.lc-label {
+  display: block;
+  font-size: 12px;
+  color: var(--SmartThemeBodyColor, #aaa);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.lc-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.lc-flex-1 {
+  flex: 1;
+}
+
+/* ---- Mood Section ---- */
+.lc-mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.lc-mood-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  transition: all 0.2s;
+}
+
+.lc-mood-item:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: scale(1.05);
+}
+
+.lc-mood-item.selected {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.15);
+}
+
+.lc-mood-emoji {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.lc-mood-label {
+  font-size: 11px;
+  color: var(--SmartThemeBodyColor, #aaa);
+}
+
+.lc-mood-history {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.lc-mood-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 12px;
+  color: var(--SmartThemeBodyColor, #ccc);
+}
+
+/* ---- Diary Section ---- */
+.lc-diary-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.lc-diary-entry {
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.lc-diary-date {
+  font-size: 11px;
+  color: #667eea;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.lc-diary-text {
+  font-size: 13px;
+  color: var(--SmartThemeBodyColor, #ddd);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.lc-diary-delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.lc-diary-entry:hover .lc-diary-delete {
+  opacity: 1;
+}
+
+.lc-diary-inject-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  margin-left: 6px;
+}
+
+.lc-diary-inject-on {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.lc-diary-inject-off {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+/* ---- Schedule/Reminder Section ---- */
+.lc-reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.lc-reminder-info {
+  flex: 1;
+}
+
+.lc-reminder-time {
+  font-size: 16px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.lc-reminder-label-text {
+  font-size: 12px;
+  color: var(--SmartThemeBodyColor, #aaa);
+}
+
+.lc-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #444;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  outline: none;
+}
+
+.lc-toggle:checked {
+  background: #667eea;
+}
+
+.lc-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.3s;
+}
+
+.lc-toggle:checked::after {
+  transform: translateX(18px);
+}
+
+/* ---- Life Events ---- */
+.lc-event-preview {
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-left: 3px solid #667eea;
+}
+
+.lc-event-category {
+  font-size: 11px;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.lc-event-text {
+  font-size: 13px;
+  color: var(--SmartThemeBodyColor, #ddd);
+  line-height: 1.5;
+}
+
+.lc-event-log {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+/* ---- Food Log ---- */
+.lc-food-log-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.lc-food-entry {
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+
+.lc-food-meal-type {
+  font-size: 11px;
+  color: #f39c12;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.lc-food-items {
+  font-size: 13px;
+  color: var(--SmartThemeBodyColor, #ddd);
+  margin-top: 2px;
+}
+
+.lc-food-time {
+  font-size: 11px;
+  color: var(--SmartThemeBodyColor, #888);
+  margin-top: 2px;
+}
+
+.lc-food-day-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--SmartThemeBodyColor, #ccc);
+  padding: 8px 0 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 6px;
+}
+
+/* ---- Study Section ---- */
+.lc-pomodoro-display {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.lc-pomodoro-timer {
+  font-size: 48px;
+  font-weight: 700;
+  color: #667eea;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+}
+
+.lc-pomodoro-status {
+  font-size: 13px;
+  color: var(--SmartThemeBodyColor, #aaa);
+  margin-top: 4px;
+}
+
+.lc-pomodoro-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.lc-pomodoro-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.lc-pomodoro-stat {
+  text-align: center;
+}
+
+.lc-pomodoro-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.lc-pomodoro-stat-label {
+  font-size: 11px;
+  color: var(--SmartThemeBodyColor, #888);
+}
+
+/* Vocab */
+.lc-vocab-card-display {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.lc-vocab-card-display:hover {
+  transform: scale(1.02);
+}
+
+.lc-vocab-word {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--SmartThemeBodyColor, #eee);
+  margin-bottom: 8px;
+}
+
+.lc-vocab-phonetic {
+  font-size: 14px;
+  color: var(--SmartThemeBodyColor, #888);
+  margin-bottom: 12px;
+}
+
+.lc-vocab-meaning {
+  font-size: 16px;
+  color: #667eea;
+  display: none;
+}
+
+.lc-vocab-meaning.show {
+  display: block;
+}
+
+.lc-vocab-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.lc-quiz-option {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border: 1px solid var(--SmartThemeBorderColor, #333);
+  border-radius: 8px;
+  background: var(--SmartThemeBotMesBlurTintColor, #0f0f23);
+  color: var(--SmartThemeBodyColor, #ddd);
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.lc-quiz-option:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.lc-quiz-option.correct {
+  border-color: #2ecc71;
+  background: rgba(46, 204, 113, 0.15);
+}
+
+.lc-quiz-option.wrong {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.15);
+}
+
+/* Vocab List Management */
+.lc-vocab-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.lc-vocab-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.lc-vocab-list-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* ---- Floating Button ---- */
+#lc-float-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  z-index: 9998;
+  transition: all 0.3s;
+}
+
+#lc-float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* ---- Notification Toast ---- */
+.lc-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 13px;
+  z-index: 99999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+  max-width: 300px;
+}
+
+@keyframes toastIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ---- Scrollbar ---- */
+#life-companion-panel *::-webkit-scrollbar {
+  width: 4px;
+}
+
+#life-companion-panel *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#life-companion-panel *::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 2px;
+}
+
+/* ---- Settings in Extension Panel ---- */
+#lc-extension-settings .inline-drawer-content {
+  padding: 8px;
+}
+
+.lc-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.lc-setting-label {
+  font-size: 13px;
+  color: var(--SmartThemeBodyColor, #ccc);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  #life-companion-panel {
+    width: 100vw;
+  }
+}
